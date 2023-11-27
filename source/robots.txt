@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://krn1pnc.github.io/sitemap.xml
