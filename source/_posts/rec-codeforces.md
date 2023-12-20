@@ -584,3 +584,13 @@ $$
 2. 如果添加了一个出现过的数字，由于我们考虑的是所有序列，所以会从后缀长度 $\ge j$ 的所有状态转移一次：$f_{i, j} \leftarrow f_{i - 1, p}$，$j \le p < k$．
 
 显然可以使用前缀和优化．
+
+## [1835D Doctor's Brown Hypothesis](https://codeforces.com/contest/1835/problem/D)
+
+容易发现只有在一个 SCC 里的点对才可能成为答案，故考虑逐 SCC 求解答案．
+
+$k \le n^3$ 的条件说明了我们可以使用图中的所有环来对某条路径增广，而根据裴蜀定理，设所有环长的 gcd 为 $g$，我们可以凑出足够长且长度为 $g$ 的倍数的路径．
+
+考虑如何求解 $g$，考虑拉出原图中的一棵外向生成树，令根为 $r$，设 $\mathrm{dis}_u$ 表示树上根到点 $u$ 的距离．对于一条边 $(u, v)$，考虑树上 $r$ 到 $v$ 的路径，长度为 $\mathrm{dis}_v$，由于环长 $\bmod\ g = 0$，一定还存在一条 $v \to r$ 的路径，长度模 $g$ 同余 $-\mathrm{dis}_v$，将其拼接上树上 $r \to u$ 的路径，得到一条长度模 $g$ 同余 $\mathrm{dis}_u - \mathrm{dis}_v$ 的路径，这条路径再拼接上 $(u, v)$ 这条边，得到了一个环，长度模 $g$ 同余 $1$，故 $\mathrm{dis}_u - \mathrm{dis}_v - 1 \equiv 0 \pmod g$．那么考虑原图中的所有边 $(u, v)$，$\mathrm{dis}_u - \mathrm{dis}_v - 1$ 的 gcd 即为要求的 $g$．
+
+显然只有 $k \equiv 0 \pmod g$，或 $g$ 为偶数且 $2k \equiv 0 \pmod g$ 时有解，开个桶计数即可．
