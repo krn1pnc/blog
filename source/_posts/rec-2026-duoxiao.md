@@ -33,9 +33,9 @@ $$
 $$
 \begin{aligned}
 \Delta_{\mathrm{max}}
-&= \max_{1 < j < i} \{\max_{s_1, s_2, s_3, s_4 \in \{-1, 1\}} [(s_1 l_i + s_2 r_i - s_3 a_i - s_4 a_i - o_i) + (s_3 l_j + s_4 r_j - s_1 a_j - s_2 a_j - o_j)]\} \\
-&= \max_{s_1, s_2, s_3, s_4 \in \{-1, 1\}} \{\max_{1 < j < i} [(s_1 l_i + s_2 r_i - s_3 a_i - s_4 a_i - o_i) + (s_3 l_j + s_4 r_j - s_1 a_j - s_2 a_j - o_j)]\} \\
-&= \max_{s_1, s_2, s_3, s_4 \in \{-1, 1\}} [(s_1 l_i + s_2 r_i - s_3 a_i - s_4 a_i - o_i) + \max_{1 < j < i} (s_3 l_j + s_4 r_j - s_1 a_j - s_2 a_j - o_j)]
+&= \max_{1 < j < i - 1} \{\max_{s_1, s_2, s_3, s_4 \in \{-1, 1\}} [(s_1 l_i + s_2 r_i - s_3 a_i - s_4 a_i - o_i) + (s_3 l_j + s_4 r_j - s_1 a_j - s_2 a_j - o_j)]\} \\
+&= \max_{s_1, s_2, s_3, s_4 \in \{-1, 1\}} \{\max_{1 < j < i - 1} [(s_1 l_i + s_2 r_i - s_3 a_i - s_4 a_i - o_i) + (s_3 l_j + s_4 r_j - s_1 a_j - s_2 a_j - o_j)]\} \\
+&= \max_{s_1, s_2, s_3, s_4 \in \{-1, 1\}} [(s_1 l_i + s_2 r_i - s_3 a_i - s_4 a_i - o_i) + \max_{1 < j < i - 1} (s_3 l_j + s_4 r_j - s_1 a_j - s_2 a_j - o_j)]
 \end{aligned}
 $$
 
