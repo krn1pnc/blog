@@ -56,3 +56,38 @@ $$
 记 $n + kc = m$，其中 $k$ 为中奖次数．若不存在这样的 $k$ 显然答案为 $0$．考虑喝一次饮料对剩余钱数的影响，若未中奖会使钱数加上 $-1$，中奖了会使钱数加上 $c - 1$．我们可以将一个局面看作长度为 $m$ 个整数序列，其中有 $k$ 个元素是 $c - 1$，剩余 $m - k$ 个元素是 $-1$．局面合法等价于序列的所有真前缀的和均大于 $-n$．
 
 对这样的序列计数，这在形式上像一个 [Raney 引理](/posts/notes-raney) 能够解决的问题，考虑构造双射使得其变成引理能处理的形式．由于序列的和为 $-n$，所有真前缀的和均大于 $-n$ 等价于所有真后缀的和均小于 $0$．将序列取反并翻转，等价于序列和为 $n$ 且所有前缀和大于 $0$．由引理，任意由 $k$ 个 $1 - c$ 和 $m - k$ 个 $1$ 组成的序列，有 $n$ 个循环移位合法．而考虑任意合法的序列，会被其所有循环位移各计算一次．故答案为 $\frac{n}{m} \binom{m}{k}$．
+
+## [牛客多校 3 M](https://ac.nowcoder.com/acm/contest/133878/M)
+
+令 $t$ 为树根．记 $f_u$ 为 $u$ 的父亲，$d_u$ 为 $u$ 的度数，$\mathrm{in}_u$ 若 $u$ 在 $s$ 到 $t$ 的路径上则为 $1$，否则为 $0$．
+
+
+设 $U_u$ 为操作 $u \rightarrow f_u$ 期望执行的次数，$D_u$ 为 $f_u \rightarrow u$ 期望执行的次数，观察游走路径可以发现，$U_u = D_u + \mathrm{in}_u$．记 $v$ 为 $u$ 的一个儿子，容易列出方程组：
+
+$$
+\begin{align}
+U_u &= \frac{1}{d_u - 1} \sum_v U_v + \frac{[u = s]}{d_u} \\
+D_v &= \frac{1}{d_u - 1} \left(D_u + \sum_{v^\prime \not= v} U_{v^\prime}\right) + \frac{[u = s]}{d_u}
+\end{align}
+$$
+
+由 $(1)$ 式可得：
+
+$$
+\sum_v U_v = (d_u - 1) U_u - \frac{d_u - 1}{d_u} [u = s]
+$$
+
+代入 $(2)$ 式有：
+
+$$
+\begin{aligned}
+D_v
+&= \frac{1}{d_u - 1} \left(D_u - U_v + \sum_{v^\prime} U_{v^\prime}\right) + \frac{[u = s]}{d_u} \\
+&= \frac{1}{d_u - 1} \left(D_u - U_v + (d_u - 1) U_u - \frac{d_u - 1}{d_u} [u = s]\right) + \frac{[u = s]}{d_u} \\
+D_v + \frac{1}{d_u - 1}U_v &= \frac{1}{d_u - 1} D_u + U_u - \frac{[u = s]}{d_u} + \frac{[u = s]}{d_u} \\
+\frac{d_u}{d_u - 1}D_v &= \frac{1}{d_u - 1} D_u + U_u - \frac{1}{d_u - 1} \mathrm{in}_v \\
+D_v &= \frac{1}{d_u} \left(D_u + (d_u - 1) U_u - \mathrm{in}_v\right)
+\end{aligned}
+$$
+
+又有 $U_v = D_v + \mathrm{in}_v$．对于 $t$ 的所有儿子 $r$，令 $U_r = \mathrm{in}_r$，自上而下转移即可．答案为 $\sum U_u + D_u$．
