@@ -37,16 +37,16 @@ mathjax:
   integrity: sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI=
 katex:
   name: katex
-  version: 0.16.9
+  version: 0.18.2
   file: dist/katex.min.css
   alias: KaTeX
-  integrity: sha256-UF1fgpAiu3tPJN/uCqEUHNe7pnr+QR0SQDNfgglgtcM=
+  integrity: sha256-fckbkmCNtfNSPP2lIN82MHsrOJ4XJdcazm5O+N7gZsc=
 copy_tex_js:
   name: katex
-  version: 0.16.9
+  version: 0.18.2
   file: dist/contrib/copy-tex.min.js
   alias: KaTeX
-  integrity: sha256-Us54+rSGDSTvIhKKUs4kygE2ipA0RXpWWh0/zLqw3bs=
+  integrity: sha256-xXHEm1IMuOkEAoczgoayF4Pjm0dmYLi1bZ4cA37q6v8=
 pjax:
   name: '@next-theme/pjax'
   version: 0.6.0
